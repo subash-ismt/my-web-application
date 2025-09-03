@@ -434,7 +434,7 @@ echo $obj->name;
 
 
 
-<h3> Superglobals</li>
+<h3> Superglobals</h3>
 
 The PHP superglobal variables are:
 
@@ -450,10 +450,12 @@ The PHP superglobal variables are:
 
 
 <h3> Basic form handling </h3>
-
+<code> 
 <form method="post">
   <input name="user"/>
   <button>Go</button>
 </form>
 <?php echo $_POST['user'] ?? ''; ?>
+
+</code>
 
