@@ -434,11 +434,22 @@ echo $obj->name;
 
 
 
-<h3> Superglobals & Forms </li>
+<h3> Superglobals</li>
 
-$_GET, $_POST, $_SESSION, $_COOKIE, $_SERVER
+The PHP superglobal variables are:
 
-Basic form handling
+<li> $GLOBALS </li>
+<li>$_SERVER </li>
+<li>$_REQUEST</li>
+<li>$_POST</li>
+<li>$_GET</li>
+<li>$_FILES</li>
+<li>$_ENV</li>
+<li>$_COOKIE</li>
+<li>$_SESSION</li>
+
+
+<h3> Basic form handling </h3>
 
 <form method="post">
   <input name="user"/>
