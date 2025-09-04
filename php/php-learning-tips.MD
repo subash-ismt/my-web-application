@@ -448,14 +448,28 @@ The PHP superglobal variables are:
 <li>$_COOKIE</li>
 <li>$_SESSION</li>
 
+Example 1: 
 
-<h3> Basic form handling </h3>
-<code> 
-<form method="post">
-  <input name="user"/>
-  <button>Go</button>
-</form>
-<?php echo $_POST['user'] ?? ''; ?>
+$x = 100;
 
-</code>
+echo $GLOBALS["x"];
+echo $x;
 
+Example 2: 
+echo $_SERVER['PHP_SELF'];
+echo $_SERVER['SERVER_NAME'];
+echo $_SERVER['HTTP_HOST'];
+echo $_SERVER['HTTP_REFERER'];
+echo $_SERVER['HTTP_USER_AGENT'];
+echo $_SERVER['SCRIPT_NAME'];
+
+Example 3:
+
+$_REQUEST['firstname']
+
+Example 4: 
+
+$name = $_POST['fname'];
+echo $name;
+$name = $_GET['fname'];
+echo $name;
