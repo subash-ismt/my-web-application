@@ -407,6 +407,16 @@ $fp = fopen("file.txt","r");
 $content = fread($fp, filesize("file.txt"));
 fclose($fp);
 
+file opearatio:
+
+"w" – Opens a file for writing only. If the file does not exist, then a new file is created, and if the file already exists, then the file will be truncated (the contents of the file are erased).
+"r" – File is open for reading only.
+"a" – File is open for writing only. The file pointer points to the end of the file. Existing data in the file is preserved.
+"w+" – Opens file for reading and writing both. If the file does not exist, then a new file is created, and if the file already exists, then the contents of the file are erased.
+"r+" – File is open for reading and writing both.
+"a+" – File is open for write/read. The file pointer points to the end of the file. Existing data in the file is preserved. If the file is not there, then a new file is created.
+"x" – New file is created for write only.
+
 
 <h3> Cookies & Sessions: </h3>
 setcookie("user", "Alice", time()+3600);
