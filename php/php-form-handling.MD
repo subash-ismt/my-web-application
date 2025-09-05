@@ -1,7 +1,7 @@
 <h3> PHP Form Handling: </h3>
 
 <h4> contact.html file: </h4>
- 
+ ```
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +24,7 @@
   </form>
 </body>
 </html>
+```
 
 form layout:
 
