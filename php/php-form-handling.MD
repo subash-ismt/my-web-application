@@ -25,34 +25,6 @@
 </body>
 </html>
 ```
-
-form layout:
-
-<code>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>PHP Form Handling</title>
-</head>
-<body>
-  <h1>Contact Form</h1>
-  <form action="process.php" method="POST">
-    <label>Name:</label>
-    <input type="text" name="name" required><br><br>
-
-    <label>Email:</label>
-    <input type="email" name="email" required><br><br>
-
-    <label>Message:</label><br>
-    <textarea name="message" rows="5" cols="30" required></textarea><br><br>
-
-    <button type="submit">Submit</button>
-  </form>
-</body>
-</html>
-</code>
-
  
 <h4> process.php file: </h4>
 
