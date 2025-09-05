@@ -50,7 +50,7 @@ form layout:
   </form>
 </body>
 </html>
-<code>
+</code>
 
  
 <h4> process.php file: </h4>
