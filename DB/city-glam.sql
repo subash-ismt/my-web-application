@@ -28,3 +28,12 @@ CREATE TABLE services (
     description TEXT,
     icon VARCHAR(50)
 );
+
+// Sample data for services table
+
+INSERT INTO services (name, description, icon) VALUES
+('Haircut & Styling', 'Trendy cuts, expert styling, and personalized looks for every occasion. Our stylists ensure you leave looking and feeling fabulous.', '💇‍♀️'),
+('Coloring & Highlights', 'Vibrant colors, natural highlights, balayage, and more. We use premium products for healthy, beautiful hair color results.', '🎨'),
+('Manicure & Pedicure', 'Relax and pamper yourself with our luxurious nail care. Choose from classic, gel, or spa treatments for hands and feet.', '💅'),
+('Facials & Skin Care', 'Rejuvenate your skin with our range of facials and treatments. We tailor each session to your skin type for glowing results.', '🌸'),
+('Bridal Packages', 'Complete bridal beauty solutions including hair, makeup, and nails. Let us make your special day truly glamorous!', '👰');
