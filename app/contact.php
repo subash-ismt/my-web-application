@@ -1,6 +1,36 @@
 <?php
-// Contact Us Page - City Glam Salon
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $servername = "localhost";
+    $username = "ismt";
+    $password = "ismt@123";
+    $dbname = "city-glam-db";
+    $port = 3355;
+
+    // Get and sanitize input
+    $name = trim($_POST["name"]);
+    $email = trim($_POST["email"]);
+    $message = trim($_POST["message"]);
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname, $port);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare and bind
+    $stmt = $conn->prepare("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $name, $email, $message);
+
+    $stmt->execute();
+
+    $stmt->close();
+    $conn->close();
+}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,6 +1,41 @@
 <?php
-// Services Page - City Glam Salon
+
+$servername = "localhost";
+$username = "ismt";
+$password =  'ismt@123';
+$dbname = "city-glam-db";
+$port = 3355; // if you have a custom port, set it here, for default 3306 no need to pass it
+
+// Create connection
+
+
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
+
+// Check connection
+
+if ($conn->connect_error) {
+    die("Connection failed: (" . $conn->connect_errno . ") " . $conn->connect_error . "<br>" .
+        "Host: $servername<br>User: $username<br>DB: $dbname<br>Port: $port");
+}
+
+
+$sql = "SELECT * FROM services";
+$result = $conn->query($sql);
+
+// var_dump($result);
+
+// if ($result->num_rows > 0) {
+//     while($row = $result->fetch_assoc()) {
+//         echo "Service: " . $row["name"] . " - Description: " . $row["description"] . "<br>";
+//     }
+// } else {
+//     echo "No services found.";
+// }
+$conn->close();
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,32 +83,23 @@
     <?php include 'header.php'; ?>
     <div class="container">
         <h1 style="text-align:center; color:#a83267;">Our Services</h1>
-        <div class="services-list">
-            <div class="service-card">
-                <div class="service-icon">💇‍♀️</div>
-                <div class="service-title">Haircut & Styling</div>
-                <div class="service-desc">Trendy cuts, expert styling, and personalized looks for every occasion. Our stylists ensure you leave looking and feeling fabulous.</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🎨</div>
-                <div class="service-title">Coloring & Highlights</div>
-                <div class="service-desc">Vibrant colors, natural highlights, balayage, and more. We use premium products for healthy, beautiful hair color results.</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">💅</div>
-                <div class="service-title">Manicure & Pedicure</div>
-                <div class="service-desc">Relax and pamper yourself with our luxurious nail care. Choose from classic, gel, or spa treatments for hands and feet.</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🌸</div>
-                <div class="service-title">Facials & Skin Care</div>
-                <div class="service-desc">Rejuvenate your skin with our range of facials and treatments. We tailor each session to your skin type for glowing results.</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">👰</div>
-                <div class="service-title">Bridal Packages</div>
-                <div class="service-desc">Complete bridal beauty solutions including hair, makeup, and nails. Let us make your special day truly glamorous!</div>
-            </div>
+       <?php
+       
+
+        if ($result->num_rows > 0) {
+            echo '<div class="services-list">';
+            while($row = $result->fetch_assoc()) {
+                echo '<div class="service-card">';
+                echo '<div class="service-icon">' . htmlspecialchars($row["icon"]) . '</div>';
+                echo '<div class="service-title">' . htmlspecialchars($row["name"]) . '</div>';
+                echo '<div class="service-desc">' . htmlspecialchars($row["description"]) . '</div>';
+                echo '</div>';
+            }
+            echo '</div>';
+        } else {
+            echo "<p>No services found.</p>";
+        }
+        ?>
         </div>
     </div>
     <?php include 'footer.php'; ?>

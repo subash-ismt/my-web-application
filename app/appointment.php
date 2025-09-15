@@ -33,7 +33,38 @@
         </form>
         <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo '<p>Thank you, ' . htmlspecialchars($_POST['name']) . '! Your appointment has been booked.</p>';
+            $servername = "localhost";
+            $username = "ismt";
+            $password = "ismt@123";
+            $dbname = "city-glam-db";
+            $port = 3355;
+
+            // Get and sanitize input
+            $name = trim($_POST['name']);
+            $email = trim($_POST['email']);
+            $service = trim($_POST['service']);
+            $date = $_POST['date'];
+            $time = $_POST['time'];
+
+            // Basic validation
+            if ($name && $email && $service && $date && $time) {
+                $conn = new mysqli($servername, $username, $password, $dbname, $port);
+                if ($conn->connect_error) {
+                    echo '<p style="color:red;">Connection failed: ' . $conn->connect_error . '</p>';
+                } else {
+                    $stmt = $conn->prepare("INSERT INTO appointments (name, email, service, date, time) VALUES (?, ?, ?, ?, ?)");
+                    $stmt->bind_param("sssss", $name, $email, $service, $date, $time);
+                    if ($stmt->execute()) {
+                        echo '<p style="color:green;">Thank you, ' . htmlspecialchars($name) . '! Your appointment has been booked.</p>';
+                    } else {
+                        echo '<p style="color:red;">Error booking appointment: ' . $stmt->error . '</p>';
+                    }
+                    $stmt->close();
+                    $conn->close();
+                }
+            } else {
+                echo '<p style="color:red;">Please fill in all fields.</p>';
+            }
         }
         ?>
     </div>
