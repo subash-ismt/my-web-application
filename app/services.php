@@ -22,15 +22,6 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM services";
 $result = $conn->query($sql);
 
-// var_dump($result);
-
-// if ($result->num_rows > 0) {
-//     while($row = $result->fetch_assoc()) {
-//         echo "Service: " . $row["name"] . " - Description: " . $row["description"] . "<br>";
-//     }
-// } else {
-//     echo "No services found.";
-// }
 $conn->close();
 
 ?>

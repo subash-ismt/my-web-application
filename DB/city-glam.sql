@@ -29,6 +29,19 @@ CREATE TABLE services (
     icon VARCHAR(50)
 );
 
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin','user') NOT NULL DEFAULT 'user',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Sample admin user (password: admin123, hashed)
+INSERT INTO users (username, password, role) VALUES
+('admin', '$2y$10$/x5uGPjtjXWsc7enh33CJeQ9OBLT3JnVIubzi5AGPDAGH.g2vwfA2', 'admin');
+
 // Sample data for services table
 
 INSERT INTO services (name, description, icon) VALUES
@@ -37,3 +50,4 @@ INSERT INTO services (name, description, icon) VALUES
 ('Manicure & Pedicure', 'Relax and pamper yourself with our luxurious nail care. Choose from classic, gel, or spa treatments for hands and feet.', '💅'),
 ('Facials & Skin Care', 'Rejuvenate your skin with our range of facials and treatments. We tailor each session to your skin type for glowing results.', '🌸'),
 ('Bridal Packages', 'Complete bridal beauty solutions including hair, makeup, and nails. Let us make your special day truly glamorous!', '👰');
+
